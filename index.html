@@ -13,7 +13,7 @@
             font-family: 'Open Sans', sans-serif;
         }
 
-        /* --- ÉCRAN D'INTRODUCTION AMÉLIORÉ --- */
+        /* --- ÉCRAN D'INTRODUCTION --- */
         #intro-screen {
             position: fixed; top: 0; left: 0;
             width: 100%; height: 100%;
@@ -22,20 +22,18 @@
             justify-content: center; align-items: center;
             color: white; text-align: center;
             box-sizing: border-box;
-            background-image: url('image/accueil.png'); /* Fond de la page principale */
+            background-image: url('image/accueil.png');
             background-size: cover;
             background-position: center;
             transition: opacity 1s cubic-bezier(0.7, 0, 0.3, 1), visibility 1s;
         }
 
-        /* Voile sombre pour garder le texte de l'intro lisible */
         .intro-overlay {
             position: absolute; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0, 0, 0, 0.75);
             z-index: 1;
         }
 
-        /* Encarts d'illustration dans les 4 coins de l'intro */
         .intro-corner-box {
             position: absolute; width: 180px; height: 110px;
             background-size: cover; background-position: center;
@@ -97,20 +95,6 @@
             width: 14px; height: 14px; background: #4CAF50; border-radius: 50%;
         }
 
-        /* --- BOUTON RETOUR INTRO (AJOUTÉ) --- */
-        #btn-back-intro {
-            position: fixed; top: 90px; right: 30px; z-index: 1500;
-            background: rgba(0,0,0,0.85); border: 1px solid #ccc;
-            color: white; padding: 8px 18px; border-radius: 50px;
-            font-size: 0.85rem; font-weight: bold; cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            transition: 0.3s;
-            display: flex; align-items: center; gap: 8px;
-        }
-        #btn-back-intro:hover {
-            background: #ffffff; color: #000000; border-color: #ffffff;
-        }
-
         /* --- LE STADE (ACCUEIL CENTRAL) --- */
         .container {
             position: relative;
@@ -122,13 +106,11 @@
             transition: transform 1.2s cubic-bezier(0.7, 0, 0.3, 1), filter 0.8s;
         }
 
-        /* Classes de Zoom */
         .zoom-media { transform: scale(2.2) translate(18%, 8%); }
         .zoom-eco { transform: scale(2.2) translate(0%, 10%); }
         .zoom-staff { transform: scale(2.2) translate(-18%, 10%); }
         .zoom-supporters { transform: scale(2.2) translate(-12%, 18%); }
 
-        /* Titre sur la page centrale */
         .main-title-stadium {
             position: absolute; top: 30px; left: 50%; transform: translateX(-50%); z-index: 120;
             color: #fff; font-size: 3rem; font-weight: bold;
@@ -137,10 +119,9 @@
             pointer-events: none;
         }
 
-        /* Logo IUT en bas à droite de la page centrale */
         .iut-logo-stadium {
-            position: absolute; bottom: -10px; right: -10px; z-index: 120;
-            width: 140px; height: auto;
+            position: absolute; bottom: 20px; right: 10px; z-index: 120;
+            width: 120px; height: auto;
             filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.8));
             pointer-events: none;
         }
@@ -162,7 +143,6 @@
             100% { box-shadow: 0 0 10px rgba(255, 204, 0, 0.4); }
         }
 
-        /* Barre d'avancement de l'exploration */
         #exploration-bar {
             position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
             background: rgba(0,0,0,0.85); padding: 10px 25px; border-radius: 30px;
@@ -171,7 +151,7 @@
             pointer-events: none;
         }
 
-        /* --- POINTS INTERACTIFS AVEC TOOLTIP --- */
+        /* --- POINTS INTERACTIFS --- */
         .dot {
             position: absolute; width: 45px; height: 45px;
             background: rgba(255,255,255,0.8); border: 3px solid #000; border-radius: 50%;
@@ -200,6 +180,7 @@
         .content-filter {
             width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85);
             padding: 60px 12%; box-sizing: border-box; overflow-y: auto; color: white;
+            scroll-behavior: smooth;
         }
         .active { display: block; }
 
@@ -216,13 +197,65 @@
         h3 { color: #4CAF50; font-size: 1.8rem; margin-bottom: 15px; text-transform: uppercase; border-left: 5px solid #4CAF50; padding-left: 15px; }
         p { line-height: 1.8; font-size: 1.1rem; color: #f0f0f0; text-align: justify; }
 
-        /* --- GRILLE 3 COLONNES --- */
         .grid-info { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-bottom: 60px; }
         .section-img { width: 100%; height: 450px; object-fit: cover; border-radius: 15px; margin-bottom: 40px; border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
 
-        /* --- ENCART MÉDIA --- */
-        .audio-player-box { background: rgba(255, 255, 255, 0.05); padding: 40px; border-radius: 15px; border: 1px solid #4CAF50; text-align: center; margin: 50px 0 80px 0; }
-        audio { width: 100%; max-width: 600px; margin-top: 20px; }
+        /* --- NOUVEAU DESIGN : ENCARTS AUDIO UNIFIÉS --- */
+        .audio-box {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            border-left: 6px solid #4CAF50; /* Liseré vert sur le côté */
+            margin: 40px 0;
+            text-align: left;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+        }
+        .audio-box h3 {
+            color: #4CAF50;
+            font-size: 1.3rem;
+            margin: 0 0 10px 0;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            border: none; /* Supprime la bordure par défaut des h3 */
+            padding-left: 0;
+        }
+        .audio-box .jump-link {
+            font-size: 0.9rem;
+            color: #ffcc00;
+            text-transform: none;
+            text-decoration: none;
+            margin-left: auto;
+            background: rgba(255, 204, 0, 0.1);
+            padding: 4px 10px;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+        .audio-box .jump-link:hover {
+            background: #ffcc00;
+            color: #000;
+        }
+        .audio-box p.desc {
+            color: #e0e0e0;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+        .audio-box audio {
+            width: 100%;
+            outline: none;
+            border-radius: 30px;
+        }
+        .audio-box .footer {
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 10px;
+        }
+
         .photo-encart { background: #1a1a1a; padding: 10px; border-radius: 8px; }
 
         /* --- BOUTON RETOUR --- */
@@ -231,6 +264,7 @@
             padding: 15px 40px; background: #fff; color: #000;
             border: none; cursor: pointer; font-weight: bold; text-transform: uppercase;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: 0.3s;
+            z-index: 2000;
         }
         .btn-back:hover { background: #4CAF50; color: #fff; }
 
@@ -239,6 +273,7 @@
         @media (max-width: 1024px) {
             .eco-row, .eco-row:nth-child(even) { flex-direction: column; text-align: center; gap: 30px; }
             .grid-info { grid-template-columns: 1fr; }
+            .audio-box h3 .jump-link { margin-left: 0; margin-top: 5px; }
         }
     </style>
 </head>
@@ -258,10 +293,6 @@
     </div>
 </div>
 
-<button id="btn-back-intro" onclick="returnToIntro()">
-    <span>🏠</span> Retour à l'intro
-</button>
-
 <div id="intro-screen">
     <div class="intro-overlay"></div>
     
@@ -279,7 +310,9 @@
 
 <div class="container" id="stadium">
     <div class="main-title-stadium">Au-delà du terrain</div>
-    <img src="https://static.wixstatic.com/media/b43d96_fde066df085b45cc9dbc2cd1680a0d83~mv2.png/v1/fill/w_250,h_250,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/b43d96_fde066df085b45cc9dbc2cd1680a0d83~mv2.png" class="iut-logo-stadium" alt="Logo iut">
+
+    <img src="image/logo_iut_info.png" class="iut-logo-stadium" alt="Logo IUT Informatique">
+
     <button id="conclusion-btn" class="btn-conclusion-trigger" onclick="show('conclusion')">🔓 Découvrir la Conclusion & Crédits</button>
     
     <div id="dot-media" class="dot" data-name="LES MÉDIAS" onclick="show('media')"></div>
@@ -320,13 +353,6 @@
         }, 1000);
     }
 
-    // FONCTION RETOUR INTRO RAJOUTÉE
-    function returnToIntro() {
-        const intro = document.getElementById('intro-screen');
-        intro.style.visibility = 'visible';
-        intro.style.opacity = '1';
-    }
-
     function toggleMainSound() {
         if (bgMusic.paused) {
             bgMusic.play().catch(e => console.log("Fichier audio introuvable"));
@@ -349,7 +375,7 @@
         if (isInterviewPlaying) {
             icon.innerText = "🔇";
             icon.style.color = "#ff4a4a";
-            text.innerText = "Ambiance en pause (Interview)";
+            text.innerText = "Ambiance en pause (Extrait audio en cours)";
         } else if (soundEnabled) {
             icon.innerText = "🔊";
             icon.style.color = "#4CAF50";
@@ -359,6 +385,34 @@
             icon.style.color = "#ff4a4a";
             text.innerText = "Ambiance désactivée";
         }
+    }
+
+    // FONCTION DE SAUT VERS L'INTERVIEW COMPLÈTE
+    function jumpToInterview(timeInSeconds) {
+        const audios = document.querySelectorAll('#dynamic-content audio');
+        audios.forEach(a => a.pause());
+
+        show('media');
+
+        setTimeout(() => {
+            const fullPlayer = document.getElementById('interview-audio');
+            if(fullPlayer) {
+                fullPlayer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                fullPlayer.currentTime = timeInSeconds;
+                fullPlayer.play();
+
+                const box = fullPlayer.closest('.audio-box');
+                if(box) {
+                    box.style.transition = "0.5s";
+                    box.style.boxShadow = "0 0 35px #ffcc00";
+                    box.style.borderColor = "#ffcc00";
+                    setTimeout(() => {
+                        box.style.boxShadow = "0 15px 30px rgba(0,0,0,0.6)";
+                        box.style.borderColor = "rgba(76, 175, 80, 0.3)";
+                    }, 2500);
+                }
+            }
+        }, 700);
     }
 
     const data = {
@@ -382,7 +436,7 @@
                 <div class="eco-row">
                     <div class="eco-text">
                         <h3>L'Arrêt Bosman : Le Big Bang de la Mondialisation</h3>
-                        <p>En décembre 1995, une décision juridique va définitivement faire basculer le football dans l'era de la mondialisation. En donnant raison à Jean-Marc Bosman, un joueur belge de seconde zone bloqué par son club, la Cour de justice des Communautés européennes applique la libre circulation des travailleurs au sport professionnel. Cela provoque la fin immédiate des quotas de joueurs étrangers issus de l'Union Européenne et accorde une liberté totale de mouvement aux athlètes arrivés en fin de contrat.</p>
+                        <p>En décembre 1995, une décision juridique va définitivement faire basculer le football dans l'ère de la mondialisation. En donnant raison à Jean-Marc Bosman, un joueur belge de seconde zone bloqué par son club, la Cour de justice des Communautés européennes applique la libre circulation des travailleurs au sport professionnel. Cela provoque la fin immédiate des quotas de joueurs étrangers issus de l'Union Européenne et accorde une liberté totale de mouvement aux athlètes arrivés en fin de contrat.</p>
                         <p>Ce verdict brise les frontières et donne naissance aux premières "équipes-monde". L'arrêt Bosman dérégule totalement le marché des transferts, concentrant de manière irrémédiable les meilleurs talents de la planète au sein d'une poignée de clubs d'élite surpuissants. Dès lors, le passeport s'efface devant le capital, marquant le début du football business moderne. En effet, cet arrêt s'inscrit directement dans l'élan de mondialisation globale de notre époque, démontrant une corrélation étroite entre les mutations de la société et le monde du ballon rond, qui s'affirme comme son parfait reflet.</p>
                     </div>
                     <div class="eco-img-container">
@@ -405,6 +459,14 @@
                         <h3>Une Oligarchie Connectée et Starifiée</h3>
                         <p>Aujourd'hui, l'industrie globale du football pèse des dizaines de milliards d'euros, mais cette richesse immense cache de profondes inégalités. Le marché s'est structuré autour d'une oligarchie financière : les quinze plus grands clubs européens captent l'essentiel des revenus commerciaux, des sponsors et des trophées majeurs, reléguant le reste du paysage sportif à un rôle de formateurs ou de faire-valoir.</p>
                         <p>En parallèle, l'économie s'est profondément dématérialisée grâce au numérique. Les supporters physiques dans le stade ne sont plus l'unique priorité ; ce sont désormais les milliards de "fans connectés" à travers le monde qui font la valeur économique d'un club. Les idoles modernes se mesurent à leur nombre d'abonnés sur Instagram ou TikTok, comme nous le précise Alexandre VAU dans l'interview, créant un phénomène de starification extrême où la notoriété numérique d'un seul joueur peut parfois dépasser l'institution historique de son propre club.</p>
+                        
+                        <div class="audio-box">
+                            <h3>🎙️ Extrait : Les réseaux et l'image du joueur <a href="#" class="jump-link" onclick="jumpToInterview(1395); return false;">(👉 Écouter à 23:15)</a></h3>
+                            <p class="desc">Voici l'extrait de l'interview où Alexandre VAU aborde l'importance des réseaux sociaux et des followers pour la notoriété et les revenus des joueurs.</p>
+                            <audio controls class="audio-snippet">
+                                <source src="réseau.mp3" type="audio/mpeg">
+                            </audio>
+                        </div>
                     </div>
                     <div class="eco-img-container">
                         <img src="image/riche.jpg" class="img-illustr" alt="Fans">
@@ -431,14 +493,14 @@
                     </div>
                 </div>
 
-                <div class="audio-player-box">
-                    <h3>🎙️ Interview Exclusive (36 min)</h3>
-                    <p>Écoutez notre entretien complet avec Alexandre VAU sur l'évolution du journalisme sportif.</p>
-                    <audio id="interview-audio" controls>
-                        <source src="interview.m4a" type="audio/mp4">
+                <div class="audio-box" id="main-interview-box">
+                    <h3>🎙️ INTERVIEW EXCLUSIVE (36 MIN)</h3>
+                    <p class="desc">Écoutez notre entretien complet avec Alexandre VAU sur l'évolution du journalisme sportif.</p>
+                    <audio controls class="audio-snippet" id="interview-audio">
+                        <source src="interview.mp3" type="audio/mpeg">
                         Votre navigateur ne supporte pas l'élément audio.
                     </audio>
-                    <p style="font-size: 0.9rem; color: #888; margin-top: 15px;">Journaliste : Alexandre VAU (Ici Occitanie) | Format : M4A</p>
+                    <div class="footer">Journaliste : Alexandre VAU (Ici Occitanie) | Format : MP3</div>
                 </div>
 
                 <div class="eco-row">
@@ -455,7 +517,24 @@
                     <div class="eco-text">
                         <h3>Réseaux sociaux et mutation de la consommation</h3>
                         <p>L'avènement d'Instagram, de TikTok et d'X (anciennement Twitter) a profondément bouleversé le rapport au football. On assiste aujourd'hui à un véritable changement structurel de consommation : les nouvelles générations délaissent de plus en plus les matchs complets de 90 minutes au profit de formats condensés, de résumés instantanés et de compilations d'actions spectaculaires.</p>
+                        
+                        <div class="audio-box">
+                            <h3>🎙️ Extrait : La nouvelle consommation <a href="#" class="jump-link" onclick="jumpToInterview(1395); return false;">(👉 Écouter à 23:15)</a></h3>
+                            <p class="desc">Voici l'extrait où il analyse le changement structurel de la consommation du football et l'influence des résumés instantanés.</p>
+                            <audio controls class="audio-snippet">
+                                <source src="Réseau_impact.mp3" type="audio/mpeg">
+                            </audio>
+                        </div>
+                        
                         <p>Cette culture de l'immédiat pousse les joueurs à soigner leur propre communication numérique, court-circuitant parfois les médias traditionnels. Cette influence globale transforme le football en un flux continu de contenus divertissants, où le buzz extra-sportif et la mise en scène de la vie des stars rivalisent désormais d'importance avec les résultats du week-end.</p>
+                        
+                        <div class="audio-box">
+                            <h3>🎙️ Extrait : La culture de l'immédiat <a href="#" class="jump-link" onclick="jumpToInterview(1410); return false;">(👉 Écouter à 23:30)</a></h3>
+                            <p class="desc">Découvrez son analyse sur la façon dont les joueurs gèrent leur communication numérique après une belle performance.</p>
+                            <audio controls class="audio-snippet">
+                                <source src="réseau_perf.mp3" type="audio/mpeg">
+                            </audio>
+                        </div>
                     </div>
                     <div class="eco-img-container">
                         <img src="https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?q=80&w=2074" class="img-illustr" alt="Réseaux Sociaux Applications">
@@ -464,15 +543,23 @@
                 <div class="eco-row">
                     <div class="eco-text">
                         <h3>La guerre des droits TV : L'ère du morcellement</h3>
-                        <p>L'économie des médias du football est dictée par la bataille féroce des diffuseurs. L'époque où une seule chaîne historique centralisait tout le championnat est révolue. L'arrivée d'acteurs comme DAZN, combinée à la présence de BeIN Sports ou Canal+, a fragmenté l'offre télévisuelle de manière inédite.</p>
+                        <p>L'économie des médias du football est dictée by la bataille féroce des diffuseurs. L'époque où une seule chaîne historique centralisait tout le championnat est révolue. L'arrivée d'acteurs comme DAZN, combinée à la présence de BeIN Sports ou Canal+, a fragmenté l'offre télévisuelle de manière inédite.</p>
                         <p>Ce morcellement des droits télévisuels pèse lourdement sur le portefeuille des amateurs de football, obligés de cumuler les abonnements coûteux pour suivre leur équipe. Pour les clubs, cette dépendance financière envers les grilles de diffusion est absolue, car une baisse des droits télévisuels mettrait directement en péril l'équilibre budgétaire du football professionnel français et sa compétitivité européenne.</p>
+                        
+                        <div class="audio-box">
+                            <h3>🎙️ Extrait : La crise des droits TV <a href="#" class="jump-link" onclick="jumpToInterview(720); return false;">(👉 Écouter à 12:00)</a></h3>
+                            <p class="desc">Voici l'extrait concernant la dépendance économique absolue des clubs envers les revenus des diffuseurs télévisuels.</p>
+                            <audio controls class="audio-snippet">
+                                <source src="droitTV.mp3" type="audio/mpeg">
+                            </audio>
+                        </div>
                     </div>
                     <div class="eco-img-container">
                         <img src="image/droit.jpg" class="img-illustr" alt="Stade Caméra Télévision">
                     </div>
                 </div>
             `
-        }, 
+        },
         staff: {
             zoom: 'zoom-staff',
             bgImage: 'url("image/staff.png")',
@@ -485,6 +572,14 @@
                         <h3>Les métiers de l’ombre</h3>
                         <p>Data analyste, entraîneur adjoint, préparateur physique, préparateurs mentaux... Ils ont tous un énorme rôle à jouer. Certes, ils ne font pas non plus la composition de l’équipe comme nous le précise Alexandre VAU dans l’interview, mais ils contribuent à l’amélioration des performances de l’équipe.</p>
                         <p>Pour Alexandre VAU c’est clair, c’est le préparateur physique qui semble être le membre le plus important du staff d’une équipe. Sans lui, les équipes peuvent se retrouver en méforme et se retrouver avec une infirmerie pleine à craquer. Aujourd’hui, tous les membres du staff sont importants et ont leur rôle à jouer.</p>
+                        
+                        <div class="audio-box">
+                            <h3>🎙️ Extrait : Le préparateur physique <a href="#" class="jump-link" onclick="jumpToInterview(60); return false;">(👉 Écouter à 01:00)</a></h3>
+                            <p class="desc">Voici le moment où il explique pourquoi le préparateur physique est le membre le plus déterminant du staff (hors entraîneur).</p>
+                            <audio controls class="audio-snippet">
+                                <source src="Préparateur_physique.mp3" type="audio/mpeg">
+                            </audio>
+                        </div>
                     </div>
                     <div class="eco-img-container">
                         <img src="image/staff.jpg" class="img-illustr" alt="Staff technique">
@@ -505,6 +600,15 @@
                         <h3>L’IA : un outil avantageux ou contraignant</h3>
                         <p>Effectivement, l’IA n’est pas à renier, et probablement qu’aujourd’hui tous les clubs de foot l’utilisent. Alexandre VAU signifie que l’IA pourra évidemment améliorer les performances et les analyses vidéo. Il est certain que l’IA a un avantage indéniable quant à l’accélération des tâches de récupération de données, de statistiques. Aujourd’hui, même les championnats l’utilisent pour rédiger leurs feuilles statistiques, on pense notamment à la Premier League qui est en partenariat avec l’IA Copilot et cela permet d’aider certains domaines de l’analyse des membres du staff d’un club.</p>
                         <p>Mais aujourd’hui, la peur s’installe aussi car un club, comme il est dit dans la partie des emplois, est un immense employeur. Mais l’IA ne pourrait-elle pas remplacer certains de ses salariés ? D’après Alexandre VAU, c’est une dystopie que de penser que l’IA va remplacer ces métiers-là, il faudra toujours des hommes derrière pour pouvoir gérer et analyser foncièrement ce type de données.</p>
+                        
+                        <div class="audio-box">
+                            <h3>🎙️ Extrait : L'Intelligence Artificielle <a href="#" class="jump-link" onclick="jumpToInterview(105); return false;">(👉 Écouter à 01:45)</a></h3>
+                            <p class="desc">Voici l'extrait abordant l'impact de l'IA sur l'analyse vidéo, la récupération de données et l'indispensabilité de l'humain.</p>
+                            <audio controls class="audio-snippet">
+                                <source src="IA.mp3" type="audio/mpeg">
+                            </audio>
+                        </div>
+                        
                         <p>Cependant, il n’y a pas seulement les clubs qui utilisent l’IA, il y a aussi les joueurs qui souhaitent s’éviter de recruter un agent. Cela s’est démontré avec le joueur Dimitri Michel qui a utilisé l'IA pour choisir le club qu'il devrait rejoindre, ainsi que la manière dont il devrait négocier son salaire. Cela est un avantage pour le joueur car il n’a pas besoin de payer son agent ni de lui passer des commissions, mais cela peut avoir un inconvénient juridique car généralement un joueur mécontent de son transfert peut attaquer en justice son agent, or là il est impossible d’attaquer en justice l’IA que M. Michel a utilisée puisque cela voudrait dire s’attaquer en justice lui-même d’après la loi.</p>
                     </div>
                     <div class="eco-img-container">
@@ -535,7 +639,7 @@
                 <div class="grid-info">
                     <div>
                         <h3>L'avantage "domicile" décrypté</h3>
-                        <p>Le public n'est pas qu'un décor. Des <a href="https://www.researchgate.net/publication/10910222_Testosterone_territoriality_and_the_'home_advantage'" target="blank" style="color: #4CAF50; text-decoration: underline;">études</a>  montrent que les encouragements massifs déclenchent une hausse de testostérone et d'adrénaline chez les joueurs locaux. Cette chimie naturelle améliore la vitesse de réaction et la résistance à la fatigue.</p>
+                        <p>Le public n'est pas qu'un décor. Des études montrent que les encouragements massifs déclenchent une hausse de testostérone et d'adrénaline chez les joueurs locaux. Cette chimie naturelle améliore la vitesse de réaction et la résistance à la fatigue.</p>
                     </div>
                     <div>
                         <h3>L'impact économique direct</h3>
@@ -558,7 +662,7 @@
                     </div>
                     <div>
                         <h3>Le Paradoxe du Soutien</h3>
-                        <p>Le soutien est une arme à double tranchant. Lorsque ferveur se transforme en exigence toxique, elle génère un stress inhibiteur. Les joueurs perdent en créativité par peur de décevoir la tribune.</p>
+                        <p>Le soutien est une arme à double tranchant. Lorsque la ferveur se transforme en exigence toxique, elle génère un stress inhibiteur. Les joueurs perdent en créativité par peur de décevoir la tribune.</p>
                     </div>
                 </div>
             `
@@ -568,7 +672,7 @@
             bgImage: 'url("https://images.unsplash.com/photo-1508098682722-e99c43a406b2?q=80&w=2070")',
             html: `
                 <div class="header-content">
-                    <h2 style="font-size: 2.1rem;">Conclusion : Pourquoi les performances d’un club ne dépendent pas seulement des joueurs</h2>
+                    <h2>Conclusion : Pourquoi les performances d’un club ne dépendent pas seulement des joueurs</h2>
                 </div>
                 <div class="eco-row">
                     <div class="eco-text">
@@ -581,10 +685,10 @@
                         <img src="image/conclusion.jpg" class="img-illustr" alt="Terrain vide fin de match">
                     </div>
                 </div>
-                <div class="audio-player-box" style="margin-top: 20px; background: rgba(0,0,0,0.5);">
+                <div class="audio-box" style="margin-top: 20px; background: rgba(0,0,0,0.5); text-align: center; border-left: 1px solid rgba(76, 175, 80, 0.3);">
                     <h3>Crédits & Remerciements</h3>
-                    <p style="text-align: center; color: #aaa; margin-bottom: 5px;">Un grand merci à <b>Alexandre VAU</b> (Journaliste chez Ici Occitanie) pour son expertise et le temps accordé lors de notre entretien.</p>
-                    <p style="text-align: center; color: #4CAF50; font-weight: bold; margin-top: 20px;">Webdocumentaire réalisé par Samuel AZNAR, Noa LIMON et Lubin BOSCREDON.</p>
+                    <p style="color: #aaa; margin-bottom: 5px;">Un grand merci à <b>Alexandre VAU</b> (Journaliste chez Ici Occitanie) pour son expertise et le temps accordé lors de notre entretien.</p>
+                    <p style="color: #4CAF50; font-weight: bold; margin-top: 20px;">Webdocumentaire réalisé par Samuel AZNAR, Noa LIMON et Lubin BOSCREDON.</p>
                     <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">© 2026 Tous droits réservés - Au-delà du Terrain</p>
                 </div>
             `
@@ -618,41 +722,44 @@
             overlay.classList.add('active');
             document.getElementById('filter').scrollTop = 0;
 
-            const interviewAudio = document.getElementById('interview-audio');
-            if (interviewAudio) {
-                interviewAudio.addEventListener('play', () => {
+            const allAudios = document.querySelectorAll('#dynamic-content audio');
+            allAudios.forEach(audioEl => {
+                audioEl.addEventListener('play', () => {
+                    allAudios.forEach(other => {
+                        if (other !== audioEl) other.pause();
+                    });
                     isInterviewPlaying = true;
                     bgMusic.pause();
                     updateSoundControlUI();
                 });
 
-                interviewAudio.addEventListener('pause', () => {
-                    isInterviewPlaying = false;
-                    if (soundEnabled) bgMusic.play().catch(e => {}); 
-                    updateSoundControlUI();
-                });
-
-                interviewAudio.addEventListener('ended', () => {
-                    isInterviewPlaying = false;
-                    if (soundEnabled) bgMusic.play().catch(e => {});
-                    updateSoundControlUI();
-                });
-            }
+                audioEl.addEventListener('pause', () => checkIfAnyAudioPlaying(allAudios));
+                audioEl.addEventListener('ended', () => checkIfAnyAudioPlaying(allAudios));
+            });
 
         }, 600);
+    }
+
+    function checkIfAnyAudioPlaying(audioElements) {
+        const anyPlaying = Array.from(audioElements).some(a => !a.paused);
+        if (!anyPlaying) {
+            isInterviewPlaying = false;
+            if (soundEnabled) bgMusic.play().catch(e => {}); 
+            updateSoundControlUI();
+        }
     }
 
     function hide() {
         const stadium = document.getElementById('stadium');
         const overlay = document.getElementById('overlay');
         
-        const interviewAudio = document.getElementById('interview-audio');
-        if(interviewAudio) {
-            interviewAudio.pause();
-            interviewAudio.currentTime = 0;
-        }
+        const audios = document.querySelectorAll('#dynamic-content audio');
+        audios.forEach(a => {
+            a.pause();
+            a.currentTime = 0;
+        });
+        
         isInterviewPlaying = false;
-
         if (soundEnabled) bgMusic.play().catch(e => {});
         updateSoundControlUI();
 
