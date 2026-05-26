@@ -1,8 +1,3 @@
-Voici le code complet modifié. J'ai réorganisé le bloc en haut à droite avec du Flexbox vertical (`flex-direction: column`). Le bouton "Retour à l'intro" est désormais parfaitement aligné **en dessous de la barre de son**, libérant tout l'espace central pour éviter d'empiéter sur le titre du stade.
-
-Voici le programme mis à jour :
-
-```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -73,9 +68,9 @@ Voici le programme mis à jour :
         }
         .btn-enter:hover { background: #4CAF50; box-shadow: 0 0 30px rgba(76, 175, 80, 0.6); transform: scale(1.05); }
 
-        /* --- BLOC NAVIGATION ET SON EN HAUT À DROITE (DISPOSÉ À LA VERTICALE) --- */
+        /* --- CONTROLLER AUDIO GLOBAL ET NAV DISPOSÉ EN COLONNE --- */
         #top-navigation {
-            position: fixed; top: 25px; right: 30px; z-index: 1500;
+            position: fixed; top: 30px; right: 30px; z-index: 1500;
             display: flex; flex-direction: column; align-items: flex-end; gap: 12px;
         }
         #sound-container {
@@ -103,14 +98,13 @@ Voici le programme mis à jour :
             width: 14px; height: 14px; background: #4CAF50; border-radius: 50%;
         }
 
-        /* BOUTON RETOUR INTRO PLACÉ EN DESSOUS */
+        /* BOUTON RETOUR INTRO EN BAS DE LA BARRE SON */
         .btn-to-intro {
             background: rgba(0, 0, 0, 0.85); border: 1px solid #ffcc00;
-            color: white; padding: 8px 18px; border-radius: 50px;
-            cursor: pointer; font-weight: bold; font-size: 0.85rem;
+            color: white; padding: 10px 20px; border-radius: 50px;
+            cursor: pointer; font-weight: bold; font-size: 0.9rem;
             display: flex; align-items: center; gap: 8px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.5); transition: 0.3s;
-            width: fit-content;
         }
         .btn-to-intro:hover { background: #ffcc00; color: #000; box-shadow: 0 0 15px #ffcc00; }
 
@@ -139,8 +133,8 @@ Voici le programme mis à jour :
         }
 
         .iut-logo-stadium {
-            position: absolute; bottom: 20px; right: 10px; z-index: 120;
-            width: 120px; height: auto;
+            position: absolute; bottom: -10px; right: -10px; z-index: 120;
+            width: 150px; height: auto;
             filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.8));
             pointer-events: none;
         }
@@ -376,6 +370,7 @@ Voici le programme mis à jour :
     }
 
     function returnToIntro() {
+        // Mettre en pause tous les audios possibles
         hide();
         bgMusic.pause();
         soundEnabled = false;
@@ -479,7 +474,7 @@ Voici le programme mis à jour :
                     <div class="eco-text">
                         <h3>L'Ère des États-Nations et du Soft Power</h3>
                         <p>À partir des années 2010, le capitalisme footballistique franchit un nouveau palier géopolitique avec l'apparition des clubs-États. Le rachat du Paris Saint-Germain par le Qatar ou de Manchester City par les Émirats Arabes Unis transforme radicalement l'économie du sport. Le football n'est plus seulement une affaire de mécènes locaux, mais un outil d'influence et de diplomatie internationale, communément appelé le <i>soft power</i>, visant à redorer l'image globale de puissances étatiques sur la scène internationale.</p>
-                        <p>Cette entrée d'actifs quasi illimités a provoqué une inflation spectaculaire sur le marché des transferts. Le transfert historique de Neymar au PSG pour 222 millions d'euros en est le point de rupture : il a prouvé que le prix d'un joueur n'obéissait plus à des lois économiques rationnelles. Le joueur de football moderne cesse d'être un simple sportif pour devenir à la fois un actif financier spéculatif et une marque commerciale mondiale.</p>
+                        <p>Cette entrée d'actifs quasi illimités a provoqué une inflation spectaculaire sur le marché des transferts. Le transfert historique de Neymar au PSG pour 222 millions d'euros en est le point de rupture : il a pouvé que le prix d'un joueur n'obéissait plus à des lois économiques rationnelles. Le joueur de football moderne cesse d'être un simple sportif pour devenir à la fois un actif financier spéculatif et une marque commerciale mondiale.</p>
                         <p>Une fois de plus, un parallèle évident se dessine : l'inflation globale de la vie courante se fait durement ressentir sur le marché du football. Bien que les joueurs soient en théorie rémunérés proportionnellement à ce qu'ils rapportent en termes de sponsoring, de visibilité et de merchandising, des montants exorbitants continuent d'exploser. Ces chiffres vertigineux font écho aux dérives d'une société contemporaine façonnée par l'ère de la surconsommation, où l'offre capitule face à l'immensité de la demande.</p>
                     </div>
                     <div class="eco-img-container">
@@ -602,7 +597,7 @@ Voici le programme mis à jour :
                 <div class="eco-row">
                     <div class="eco-text">
                         <h3>Les métiers de l’ombre</h3>
-                        <p>Data analyste, entraîneur adjoint, préparateur physique, préparateurs mentaux... Ils ont tous un énorme rôle à jouer. Certes, ils ne font pas non plus la composition de l’équipe comme nous le précise Alexandre VAU dans l’interview, mais ils contribuent à l’amélioration des performances de l’équipe.</p>
+                        <p>Data analyste, entraîneur adjoint, préparateur physique, préparateurs mentaux... Ils ont tous un énorme rôle à jouer. Certes, ils ne font pas non plus la composition de l’équipe comme nous le précise Alexandre VAU dans l’interview, mais they contribuent à l’amélioration des performances de l’équipe.</p>
                         <p>Pour Alexandre VAU c’est clair, c’est le préparateur physique qui semble être le membre le plus important du staff d’une équipe. Sans lui, les équipes peuvent se retrouver en méforme et se retrouver avec une infirmerie pleine à craquer. Aujourd’hui, tous les membres du staff sont importants et ont leur rôle à jouer.</p>
                         
                         <div class="audio-box">
@@ -652,7 +647,7 @@ Voici le programme mis à jour :
                         <h3>L’arbitrage et son influence</h3>
                         <p>De tout temps, l’arbitrage a toujours été essentiel à la compétition sportive. Historiquement présents directement sur la pelouse, les officiels partagent désormais leur autorité à distance depuis la Coupe du Monde 2018 avec l’apparition de l’assistance vidéo à l’arbitrage (la VAR). Mais cette évolution technologique s'inscrit dans un mouvement permanent : chaque année, l’IFAB (l'instance internationale garante des lois du jeu) édicte de nouvelles règles ou consignes.</p>
                         <p>Ces directives ne sont jamais appliquées à l'aveugle. Elles passent d'abord par de rigoureuses phases de tests au sein de divisions inférieures. C'est le cas par exemple du championnat de National (la 3ème division française), régulièrement désigné comme laboratoire d'expérimentation pour éprouver les nouvelles règles avant leur déploiement global.</p>
-                        <p>En somme, si les textes de lois sont complexes, ce sont surtout les "zones grises" qui font débat. These situations ambiguës, non définies précisément par le règlement officiel, laissent place à la propre interprétation de l'arbitre et s'avèrent les plus contestables. Cet aspect est sans doute l'élément le plus marquant de notre sujet, car les arbitres détiennent le pouvoir direct de sanctionner et de faire basculer le cours d’un match.</p>
+                        <p>En somme, si les textes de lois sont complexes, ce sont surtout les "zones grises" qui font débat. Ces situations ambiguës, non définies précisément par le règlement officiel, laissent place à la propre interprétation de l'arbitre et s'avèrent les plus contestables. Cet aspect est sans doute l'élément le plus marquant de notre sujet, car les arbitres détiennent le pouvoir direct de sanctionner et de faire basculer le cours d’un match.</p>
                     </div>
                     <div class="eco-img-container">
                         <img src="image/arbitre.jpg" class="img-illustr" alt="Arbitre de football carton">
@@ -803,5 +798,3 @@ Voici le programme mis à jour :
 
 </body>
 </html>
-
-```
