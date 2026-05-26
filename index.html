@@ -68,9 +68,12 @@
         }
         .btn-enter:hover { background: #4CAF50; box-shadow: 0 0 30px rgba(76, 175, 80, 0.6); transform: scale(1.05); }
 
-        /* --- CONTROLLER AUDIO GLOBAL ET VOLUME --- */
-        #sound-container {
+        /* --- CONTROLLER AUDIO GLOBAL ET NAV --- */
+        #top-navigation {
             position: fixed; top: 30px; right: 30px; z-index: 1500;
+            display: flex; align-items: center; gap: 15px;
+        }
+        #sound-container {
             display: flex; align-items: center; gap: 15px;
             background: rgba(0,0,0,0.85); border: 1px solid #4CAF50;
             padding: 10px 20px; border-radius: 50px;
@@ -94,6 +97,16 @@
             -webkit-appearance: none; appearance: none;
             width: 14px; height: 14px; background: #4CAF50; border-radius: 50%;
         }
+
+        /* BOUTON RETOUR INTRO */
+        .btn-to-intro {
+            background: rgba(0, 0, 0, 0.85); border: 1px solid #ffcc00;
+            color: white; padding: 10px 20px; border-radius: 50px;
+            cursor: pointer; font-weight: bold; font-size: 0.9rem;
+            display: flex; align-items: center; gap: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5); transition: 0.3s;
+        }
+        .btn-to-intro:hover { background: #ffcc00; color: #000; box-shadow: 0 0 15px #ffcc00; }
 
         /* --- LE STADE (ACCUEIL CENTRAL) --- */
         .container {
@@ -200,13 +213,13 @@
         .grid-info { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-bottom: 60px; }
         .section-img { width: 100%; height: 450px; object-fit: cover; border-radius: 15px; margin-bottom: 40px; border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
 
-        /* --- NOUVEAU DESIGN : ENCARTS AUDIO UNIFIÉS --- */
+        /* --- ENCARTS AUDIO UNIFIÉS --- */
         .audio-box {
             background: rgba(0, 0, 0, 0.7);
             padding: 30px;
             border-radius: 12px;
             border: 1px solid rgba(76, 175, 80, 0.3);
-            border-left: 6px solid #4CAF50; /* Liseré vert sur le côté */
+            border-left: 6px solid #4CAF50;
             margin: 40px 0;
             text-align: left;
             box-shadow: 0 15px 30px rgba(0,0,0,0.6);
@@ -219,7 +232,7 @@
             align-items: center;
             flex-wrap: wrap;
             gap: 10px;
-            border: none; /* Supprime la bordure par défaut des h3 */
+            border: none;
             padding-left: 0;
         }
         .audio-box .jump-link {
@@ -283,14 +296,17 @@
     <source src="audio.mp3" type="audio/mpeg">
 </audio>
 
-<div id="sound-container">
-    <button id="sound-control" onclick="toggleMainSound()">
-        <span id="sound-icon">🔇</span> <span id="sound-text">Ambiance désactivée</span>
-    </button>
-    <div class="volume-box">
-        <label for="volume-range" style="color: #ccc; font-size: 0.8rem; font-weight: bold;">🎚️</label>
-        <input type="range" id="volume-range" class="volume-slider" min="0" max="1" step="0.05" value="0.5" oninput="changeVolume(this.value)">
+<div id="top-navigation">
+    <div id="sound-container">
+        <button id="sound-control" onclick="toggleMainSound()">
+            <span id="sound-icon">🔇</span> <span id="sound-text">Ambiance désactivée</span>
+        </button>
+        <div class="volume-box">
+            <label for="volume-range" style="color: #ccc; font-size: 0.8rem; font-weight: bold;">🎚️</label>
+            <input type="range" id="volume-range" class="volume-slider" min="0" max="1" step="0.05" value="0.5" oninput="changeVolume(this.value)">
+        </div>
     </div>
+    <button class="btn-to-intro" onclick="returnToIntro()">🏠 Retour à l'intro</button>
 </div>
 
 <div id="intro-screen">
@@ -353,6 +369,18 @@
         }, 1000);
     }
 
+    function returnToIntro() {
+        // Mettre en pause tous les audios possibles
+        hide();
+        bgMusic.pause();
+        soundEnabled = false;
+        updateSoundControlUI();
+
+        const intro = document.getElementById('intro-screen');
+        intro.style.visibility = 'visible';
+        intro.style.opacity = '1';
+    }
+
     function toggleMainSound() {
         if (bgMusic.paused) {
             bgMusic.play().catch(e => console.log("Fichier audio introuvable"));
@@ -387,7 +415,6 @@
         }
     }
 
-    // FONCTION DE SAUT VERS L'INTERVIEW COMPLÈTE
     function jumpToInterview(timeInSeconds) {
         const audios = document.querySelectorAll('#dynamic-content audio');
         audios.forEach(a => a.pause());
@@ -427,7 +454,7 @@
                     <div class="eco-text">
                         <h3>L'Explosion Télévisuelle</h3>
                         <p>Avant les années 1990, le football est un sport immensément populaire mais structurellement pauvre, où la majorité des revenus provient encore de la billetterie physique. La rupture historique intervient en 1992 avec la scission de la Premier League anglaise : les clubs décident de s'émanciper de la fédération pour négocier directement leurs propres droits de diffusion télévisuelle.</p>
-                        <p>Cette privatisation des images attire des géants des médias comme Sky Sports, injectant instantanément des sommes astronomiques dans le circuit. L'argent commence alors à couler à flots, déclenchant une réaction en chaîne à travers l'Europe : les stades se modernisent, les salaires décollent et le football quitte sa dimension purement locale pour se transformer en un spectacle de divertissement mondial permanent, diffusé 24h/24 aux quatre coins du globe.</p>
+                        <p>Cette privatisation des images attire des géants des médias comme Sky Sports, injectant instantanément des sommes astronomiques dans le circuit. L'argent commence alors à couler à flots, déclenchant une reaction en chaîne à travers l'Europe : les stades se modernisent, les salaires décollent et le football quitte sa dimension purement locale pour se transformer en un spectacle de divertissement mondial permanent, diffusé 24h/24 aux quatre coins du globe.</p>
                     </div>
                     <div class="eco-img-container">
                         <img src="image/premierleague.png" class="img-illustr" alt="Droits TV">
@@ -448,7 +475,7 @@
                         <h3>L'Ère des États-Nations et du Soft Power</h3>
                         <p>À partir des années 2010, le capitalisme footballistique franchit un nouveau palier géopolitique avec l'apparition des clubs-États. Le rachat du Paris Saint-Germain par le Qatar ou de Manchester City par les Émirats Arabes Unis transforme radicalement l'économie du sport. Le football n'est plus seulement une affaire de mécènes locaux, mais un outil d'influence et de diplomatie internationale, communément appelé le <i>soft power</i>, visant à redorer l'image globale de puissances étatiques sur la scène internationale.</p>
                         <p>Cette entrée d'actifs quasi illimités a provoqué une inflation spectaculaire sur le marché des transferts. Le transfert historique de Neymar au PSG pour 222 millions d'euros en est le point de rupture : il a prouvé que le prix d'un joueur n'obéissait plus à des lois économiques rationnelles. Le joueur de football moderne cesse d'être un simple sportif pour devenir à la fois un actif financier spéculatif et une marque commerciale mondiale.</p>
-                        <p>Une fois de plus, un parallèle évident se dessine : l'inflation globale de la vie courante se fait durement ressentir sur le marché du football. Bien que les joueurs soient en théorie rémunérés proportionnellement à ce qu'ils rapportent en termes de sponsoring, de visibilité et de merchandising, des montants exorbitants continuent d'exploser. Ces chiffres vertigineux font écho aux dérives d'une société contemporaine façonnée par l'ère de la surconsommation, où l'offre capitule face à l'immensité de la demande.</p>
+                        <p>Une fois de plus, un parallèle évident se dessine : l'inflation globale de la vie courante se fait durement ressentir sur le marché du football. Bien que les joueurs soient en théorie rémunérés proportionnellement à ce qu'ils rapportent en termes de sponsoring, de visibilité et de merchandising, des montants exorbitants continuent d'exploser. Ces chiffres vertigineux font écho aux dérives d'une société contemporaine façonnée par l'era de la surconsommation, où l'offre capitule face à l'immensité de la demande.</p>
                     </div>
                     <div class="eco-img-container">
                         <img src="image/Neymar_PSG.jpg" class="img-illustr" alt="Neymar">
@@ -543,7 +570,7 @@
                 <div class="eco-row">
                     <div class="eco-text">
                         <h3>La guerre des droits TV : L'ère du morcellement</h3>
-                        <p>L'économie des médias du football est dictée by la bataille féroce des diffuseurs. L'époque où une seule chaîne historique centralisait tout le championnat est révolue. L'arrivée d'acteurs comme DAZN, combinée à la présence de BeIN Sports ou Canal+, a fragmenté l'offre télévisuelle de manière inédite.</p>
+                        <p>L'économie des médias du football est dictée par la bataille féroce des diffuseurs. L'époque où une seule chaîne historique centralisait tout le championnat est révolue. L'arrivée d'acteurs comme DAZN, combinée à la présence de BeIN Sports ou Canal+, a fragmenté l'offre télévisuelle de manière inédite.</p>
                         <p>Ce morcellement des droits télévisuels pèse lourdement sur le portefeuille des amateurs de football, obligés de cumuler les abonnements coûteux pour suivre leur équipe. Pour les clubs, cette dépendance financière envers les grilles de diffusion est absolue, car une baisse des droits télévisuels mettrait directement en péril l'équilibre budgétaire du football professionnel français et sa compétitivité européenne.</p>
                         
                         <div class="audio-box">
@@ -570,7 +597,7 @@
                 <div class="eco-row">
                     <div class="eco-text">
                         <h3>Les métiers de l’ombre</h3>
-                        <p>Data analyste, entraîneur adjoint, préparateur physique, préparateurs mentaux... Ils ont tous un énorme rôle à jouer. Certes, ils ne font pas non plus la composition de l’équipe comme nous le précise Alexandre VAU dans l’interview, mais ils contribuent à l’amélioration des performances de l’équipe.</p>
+                        <p>Data analyste, entraîneur adjoint, préparateur physique, préparateurs mentaux... Ils ont tous un énorme rôle à jouer. Certes, ils ne font pas non plus la composition de l’équipe comme nous le précise Alexandre VAU dans l’interview, mais they contribuent à l’amélioration des performances de l’équipe.</p>
                         <p>Pour Alexandre VAU c’est clair, c’est le préparateur physique qui semble être le membre le plus important du staff d’une équipe. Sans lui, les équipes peuvent se retrouver en méforme et se retrouver avec une infirmerie pleine à craquer. Aujourd’hui, tous les membres du staff sont importants et ont leur rôle à jouer.</p>
                         
                         <div class="audio-box">
